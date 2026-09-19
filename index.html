@@ -878,6 +878,9 @@
             font-size: 28px;
         }
     }
+
+    /* PRÓXIMO SORTEIO / GANHADORES */
+    .sorteio-social{margin-top:28px;margin-bottom:34px;font-family:'Inter',Arial,sans-serif}.proximo-sorteio-card{background:#fff;border:1px solid #e7e9ef;border-radius:12px;padding:18px 20px;box-shadow:0 3px 12px rgba(12,35,95,.06);position:relative;overflow:hidden}.proximo-sorteio-card:before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:#0b45b7}.proximo-sorteio-topo{font-size:12px;line-height:1;font-weight:800;letter-spacing:.7px;color:#111;margin-bottom:7px}.proximo-sorteio-premio{font-size:30px;line-height:1.05;font-weight:800;color:#0b45b7;letter-spacing:-.8px;margin-bottom:5px}.proximo-sorteio-data{font-size:23px;line-height:1.15;font-weight:800;color:#111;text-transform:uppercase}.proximo-sorteio-info{margin-top:8px;font-size:13px;color:#68758e;font-weight:500}.ganhadores-cabecalho{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin:28px 0 14px}.ganhadores-cabecalho h2{font-size:25px;line-height:1.1;font-weight:800;color:#080808;margin:0 0 5px;letter-spacing:-.4px}.ganhadores-cabecalho p{font-size:13px;color:#7b7b7b;margin:0;font-weight:400}.ganhadores-cabecalho strong{color:#77a1e8;font-weight:700}.ganhadores-lista{display:flex;gap:12px;overflow-x:auto;padding:2px 1px 12px;scrollbar-width:thin;scroll-snap-type:x proximity}.ganhador-card{position:relative;flex:0 0 158px;height:238px;border:0;border-radius:9px;overflow:hidden;padding:0;background:#0d1830;cursor:pointer;scroll-snap-align:start;box-shadow:0 2px 8px rgba(0,0,0,.10)}.ganhador-card img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01);transition:transform .2s ease}.ganhador-card:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.02) 45%,rgba(5,17,43,.88) 100%)}.ganhador-card:hover img{transform:scale(1.045)}.ganhador-play{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:40px;border-radius:12px;background:#ff0033;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;padding-left:3px;box-shadow:0 4px 15px rgba(0,0,0,.25)}.ganhador-legenda{position:absolute;z-index:2;left:10px;right:10px;bottom:10px;color:#fff;text-align:left;font-size:10px;line-height:1.2;font-weight:800;letter-spacing:.2px}.video-modal-ganhador{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:120000;align-items:center;justify-content:center;padding:18px}.video-modal-ganhador.aberto{display:flex}.video-modal-caixa{width:min(800px,96vw);background:#fff;border-radius:13px;padding:20px;position:relative;box-shadow:0 20px 70px rgba(0,0,0,.35)}.video-modal-fechar{position:absolute;right:10px;top:7px;z-index:4;border:0;background:#fff;color:#111;width:38px;height:38px;border-radius:50%;font-size:28px;line-height:36px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15)}.video-modal-player{position:relative;width:100%;aspect-ratio:16/9;border-radius:9px;overflow:hidden;background:#000;margin-top:20px}.video-modal-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}@media(max-width:600px){.proximo-sorteio-card{padding:16px 17px}.proximo-sorteio-premio{font-size:27px}.proximo-sorteio-data{font-size:20px}.ganhadores-cabecalho h2{font-size:23px}.ganhador-card{flex-basis:145px;height:218px}.video-modal-caixa{padding:12px}.video-modal-player{margin-top:24px}}
     </style>
 </head>
 <body>
@@ -989,11 +992,25 @@
         </div>
     </div>
 
-    <!-- DATAS AUTOMÁTICAS DO SORTEIO -->
-    <section class="container-principal" id="agendaSorteio" style="margin-top:22px;margin-bottom:22px;">
-      <div style="background:#f8f9fa;border:1px solid #e9ecef;border-radius:14px;padding:18px 20px;"><div style="font-size:12px;font-weight:700;color:#2f4eb5;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;">R$ 1 MILHÃO TODO DOMINGO</div><h2 style="font-size:22px;margin:0 0 5px;color:#171717;font-weight:800;">Próximo sorteio: <span id="dataProximoSorteio">domingo</span></h2><p style="margin:0;color:#666;font-size:14px;">A data é atualizada automaticamente a cada semana.</p></div>
-      <div style="margin-top:28px;"><h2 style="font-size:24px;margin:0 0 4px;color:#111;font-weight:800;">Ganhadores recentes</h2><p style="margin:0;color:#777;font-size:14px;">Confira os ganhadores do sorteio da edição de <strong id="dataUltimoSorteio">domingo</strong>.</p></div>
+    <!-- PRÓXIMO SORTEIO + GANHADORES -->
+    <section class="container-principal sorteio-social" id="agendaSorteio">
+        <div class="proximo-sorteio-card">
+            <div class="proximo-sorteio-topo">PRÓXIMO SORTEIO</div>
+            <div class="proximo-sorteio-premio">R$ 1 MILHÃO</div>
+            <div class="proximo-sorteio-data"><span>DOM.</span> <span id="dataCurtaProximoSorteio">20 SET | 2026</span></div>
+            <div class="proximo-sorteio-info">Todo domingo • confira sua participação</div>
+        </div>
+        <div class="ganhadores-cabecalho"><div><h2>Ganhadores recentes</h2><p>Confira os ganhadores do sorteio da edição <strong id="edicaoUltimoSorteio">006</strong> de <strong id="dataUltimoSorteio">domingo, 13 de setembro de 2026</strong></p></div></div>
+        <div class="ganhadores-lista">
+            <button class="ganhador-card" type="button" data-youtube="JBarx7agjpY" aria-label="Assistir vídeo do ganhador 1"><img src="https://img.youtube.com/vi/JBarx7agjpY/hqdefault.jpg" alt="Vídeo de ganhador" loading="lazy"><span class="ganhador-play">▶</span><span class="ganhador-legenda">ASSISTIR DEPOIMENTO</span></button>
+            <button class="ganhador-card" type="button" data-youtube="d_miq9dw4bM" aria-label="Assistir vídeo do ganhador 2"><img src="https://img.youtube.com/vi/d_miq9dw4bM/hqdefault.jpg" alt="Vídeo de ganhador" loading="lazy"><span class="ganhador-play">▶</span><span class="ganhador-legenda">ASSISTIR DEPOIMENTO</span></button>
+            <button class="ganhador-card" type="button" data-youtube="05wOd0BJJsM" aria-label="Assistir vídeo do ganhador 3"><img src="https://img.youtube.com/vi/05wOd0BJJsM/hqdefault.jpg" alt="Vídeo de ganhador" loading="lazy"><span class="ganhador-play">▶</span><span class="ganhador-legenda">ASSISTIR DEPOIMENTO</span></button>
+            <button class="ganhador-card" type="button" data-youtube="Y7lGcLGWxX8" aria-label="Assistir vídeo do ganhador 4"><img src="https://img.youtube.com/vi/Y7lGcLGWxX8/hqdefault.jpg" alt="Vídeo de ganhador" loading="lazy"><span class="ganhador-play">▶</span><span class="ganhador-legenda">ASSISTIR DEPOIMENTO</span></button>
+            <button class="ganhador-card" type="button" data-youtube="AuGOqpTwDW0" aria-label="Assistir vídeo do ganhador 5"><img src="https://img.youtube.com/vi/AuGOqpTwDW0/hqdefault.jpg" alt="Vídeo de ganhador" loading="lazy"><span class="ganhador-play">▶</span><span class="ganhador-legenda">ASSISTIR DEPOIMENTO</span></button>
+            <button class="ganhador-card" type="button" data-youtube="Ta3Mk80rA00" aria-label="Assistir vídeo do ganhador 6"><img src="https://img.youtube.com/vi/Ta3Mk80rA00/hqdefault.jpg" alt="Vídeo de ganhador" loading="lazy"><span class="ganhador-play">▶</span><span class="ganhador-legenda">ASSISTIR DEPOIMENTO</span></button>
+        </div>
     </section>
+    <div class="video-modal-ganhador" id="videoModalGanhador" aria-hidden="true"><div class="video-modal-caixa" role="dialog" aria-modal="true" aria-label="Vídeo do ganhador"><button type="button" class="video-modal-fechar" id="fecharVideoGanhador" aria-label="Fechar vídeo">×</button><div class="video-modal-player"><iframe id="iframeGanhador" src="" title="Vídeo do ganhador" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div></div>
 
     <!-- HOSPITAL -->
     <div class="container-principal">
@@ -1384,17 +1401,27 @@
     <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     
     <script>
-    // DATAS AUTOMÁTICAS: próximo domingo e último domingo
+    // DATAS AUTOMÁTICAS + POPUP DOS GANHADORES
     function atualizarDatasSorteio() {
       const agora=new Date(), hoje=new Date(agora.getFullYear(),agora.getMonth(),agora.getDate());
       const diasAteDomingo=(7-hoje.getDay())%7;
       const proximoDomingo=new Date(hoje); proximoDomingo.setDate(hoje.getDate()+diasAteDomingo);
       const ultimoDomingo=new Date(proximoDomingo); ultimoDomingo.setDate(proximoDomingo.getDate()-7);
-      const formatar=(data)=>data.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
-      const prox=document.getElementById('dataProximoSorteio'), ultimo=document.getElementById('dataUltimoSorteio');
-      if(prox) prox.textContent=formatar(proximoDomingo); if(ultimo) ultimo.textContent=formatar(ultimoDomingo);
+      const meses=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+      const curta=String(proximoDomingo.getDate()).padStart(2,'0')+' '+meses[proximoDomingo.getMonth()]+' | '+proximoDomingo.getFullYear();
+      const longa=ultimoDomingo.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+      const curtaEl=document.getElementById('dataCurtaProximoSorteio'), ultimo=document.getElementById('dataUltimoSorteio');
+      if(curtaEl) curtaEl.textContent=curta; if(ultimo) ultimo.textContent=longa;
+      const base=new Date(2026,8,13); base.setHours(0,0,0,0); const semanas=Math.round((ultimoDomingo-base)/604800000);
+      const ed=document.getElementById('edicaoUltimoSorteio'); if(ed) ed.textContent=String(Math.max(1,6+semanas)).padStart(3,'0');
     }
     atualizarDatasSorteio(); setInterval(atualizarDatasSorteio,60*60*1000);
+    document.addEventListener('DOMContentLoaded',function(){
+      const modal=document.getElementById('videoModalGanhador'), iframe=document.getElementById('iframeGanhador'), fechar=document.getElementById('fecharVideoGanhador');
+      function fecharVideo(){if(!modal)return;modal.classList.remove('aberto');modal.setAttribute('aria-hidden','true');iframe.src='';document.body.style.overflow='';}
+      document.querySelectorAll('.ganhador-card').forEach(card=>card.addEventListener('click',function(){const id=this.dataset.youtube;iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0&modestbranding=1';modal.classList.add('aberto');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}));
+      if(fechar) fechar.addEventListener('click',fecharVideo); if(modal) modal.addEventListener('click',e=>{if(e.target===modal)fecharVideo();}); document.addEventListener('keydown',e=>{if(e.key==='Escape')fecharVideo();});
+    });
 
     // VARIÁVEIS GLOBAIS
     let pacoteSelecionado = {
