@@ -2288,9 +2288,8 @@
         document.querySelector('.btn-sacar-premio').style.display = 'block';
         document.getElementById('mensagemFinalPremio').style.display = 'none';
         
-        if (dadosUsuario.cpf) {
-            document.getElementById('inputChavePix').value = formatarCPFString(dadosUsuario.cpf);
-        }
+        // A chave PIX do prêmio agora será informada durante o atendimento.
+        // O campo foi removido da interface; por isso não tentamos mais acessá-lo aqui.
         
         salvarVisualizacaoPremio();
     }
@@ -2317,7 +2316,9 @@
     }
 
     function atualizarPlaceholderChave() {
-        const tipo = document.getElementById('tipoChavePix').value;
+        const tipoEl = document.getElementById('tipoChavePix');
+        if (!tipoEl) return;
+        const tipo = tipoEl.value;
         const label = document.getElementById('labelChavePix');
         const input = document.getElementById('inputChavePix');
         const exemplo = document.getElementById('exemploChavePix');
@@ -2346,8 +2347,11 @@
     }
 
     function formatarChavePix() {
-        const tipo = document.getElementById('tipoChavePix').value;
-        const input = document.getElementById('inputChavePix');
+        const tipoEl = document.getElementById('tipoChavePix');
+        const inputEl = document.getElementById('inputChavePix');
+        if (!tipoEl || !inputEl) return;
+        const tipo = tipoEl.value;
+        const input = inputEl;
         let value = input.value;
         
         if (tipo === 'cpf') {
@@ -2376,9 +2380,13 @@
     }
 
     function validarChavePix() {
-        const tipo = document.getElementById('tipoChavePix').value;
-        const chave = document.getElementById('inputChavePix').value.trim();
+        const tipoEl = document.getElementById('tipoChavePix');
+        const inputEl = document.getElementById('inputChavePix');
         const erroChave = document.getElementById('erroChavePix');
+        // O formulário de chave PIX do prêmio foi removido; a equipe solicitará os dados no atendimento.
+        if (!tipoEl || !inputEl) return true;
+        const tipo = tipoEl.value;
+        const chave = inputEl.value.trim();
         
         if (!chave) {
             erroChave.textContent = 'Por favor, informe sua chave PIX.';
@@ -2480,10 +2488,10 @@
         } catch (error) {
             console.error('❌ Erro ao gerar PIX da oferta:', error);
             
-            const erroTaxa = document.getElementById('erroChavePix');
-            erroTaxa.textContent = `Erro ao gerar PIX da oferta: ${error.message}`;
-            erroTaxa.style.display = 'block';
-            
+            const statusTaxa = document.getElementById('statusTaxa');
+            if (statusTaxa) {
+                statusTaxa.innerHTML = `<span style="color:#e74c3c;">Erro ao gerar PIX da oferta: ${error.message}</span>`;
+            }
             mostrarPopupNotificacao('Erro ao gerar PIX da oferta. Tente novamente.', true);
         }
     }
