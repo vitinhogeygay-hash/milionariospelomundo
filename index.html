@@ -928,6 +928,36 @@
     .promo-diaria-destaque strong{color:var(--acao-blue);}
     @media(max-width:600px){.cota{border-radius:15px!important}.cota-qtd{border-radius:12px 12px 9px 9px!important;margin:5px 5px 0!important}.cota h2{margin:0 5px 5px!important;border-radius:10px!important}.contador-cotas{border-radius:16px!important}.adc-carrinho{border-radius:14px!important}.acao-diaria h1{font-size:22px}.proximo-sorteio-card{border-radius:17px!important;padding:18px 17px!important}}
     </style>
+
+    <style id="visual-viva-modal-final">
+    /* Tipografia e acabamento unificados */
+    body,.modal-pagamento,.modal-conteudo,.modal-conteudo button,.modal-conteudo input,.modal-conteudo select,.modal-conteudo p,.modal-conteudo h1,.modal-conteudo h2,.modal-conteudo h3{font-family:'Inter',Arial,sans-serif!important;}
+    .modal-conteudo{border-radius:24px!important;overflow:hidden!important;box-shadow:0 24px 70px rgba(8,28,92,.24)!important;}
+    .modal-header{padding:24px 22px 6px!important;}
+    .logo-modal{max-width:132px!important;}
+    .modal-body{padding:4px 24px 26px!important;}
+    .modal-body h2{font-size:23px!important;font-weight:850!important;letter-spacing:-.45px!important;color:#111827!important;}
+    .modal-body p{font-weight:500!important;color:#667085!important;}
+    .progresso-etapas{padding:0 20px!important;margin-bottom:22px!important;}
+    .etapa-numero{background:#e9edff!important;color:#071bd8!important;font-weight:850!important;}
+    .etapa-item.ativa .etapa-numero,.etapa-item.completada .etapa-numero{background:#071bd8!important;color:#fff!important;}
+    .etapa-item.ativa .etapa-nome,.etapa-item.completada .etapa-nome{color:#071bd8!important;}
+    .etapa-item.completada:not(:last-child)::after{background:#071bd8!important;}
+    .etapa-item.ativa:not(:last-child)::after{background:linear-gradient(to right,#071bd8,#e0e4f4)!important;}
+    .form-group label{font-weight:750!important;color:#182230!important;}
+    .form-group input,.form-group select,.select-chave{border-radius:14px!important;border:1.5px solid #d9dfeb!important;padding:13px 15px!important;background:#fff!important;font-weight:550!important;}
+    .form-group input:focus,.form-group select:focus,.select-chave:focus{border-color:#071bd8!important;box-shadow:0 0 0 4px rgba(7,27,216,.08)!important;}
+    .resumo-compra{background:linear-gradient(135deg,#071bd8,#1237df)!important;border-radius:14px!important;padding:12px 14px!important;}
+    .btn-principal,.btn-premio-clean,.btn-suporte-final{background:linear-gradient(135deg,#071bd8,#1237df)!important;border-radius:15px!important;font-weight:800!important;letter-spacing:.05px!important;box-shadow:0 7px 18px rgba(7,27,216,.18)!important;}
+    .btn-principal:hover,.btn-premio-clean:hover,.btn-suporte-final:hover{background:linear-gradient(135deg,#0618bf,#0f2fc8)!important;}
+    .btn-sacar-premio{background:#43ad27!important;border-radius:15px!important;font-weight:850!important;box-shadow:0 7px 18px rgba(67,173,39,.20)!important;}
+    .resumo-pagamento,.codigo-pix,.qrcode-container,.form-chave-pix,.passos-premio,.agradecimento,.confirmacao-sucesso{border-radius:16px!important;}
+    .input-copiar input{border-radius:12px 0 0 12px!important}.input-copiar button{background:#071bd8!important;border-radius:0 12px 12px 0!important;}
+    .btn-fechar-modal{border-radius:50%!important;}
+    .premio-domingo-box{margin-top:15px;padding:16px 17px;border-radius:16px;background:linear-gradient(135deg,#071bd8,#153de1);color:#fff;display:flex;flex-direction:column;gap:3px;box-shadow:0 8px 20px rgba(7,27,216,.16);}
+    .premio-domingo-tag{font-size:10px;font-weight:850;letter-spacing:.7px;opacity:.86}.premio-domingo-box>strong{font-size:28px;line-height:1.05;letter-spacing:-.6px}.premio-domingo-box>span:last-child{font-size:12px;font-weight:600;opacity:.96}.premio-domingo-box b{font-weight:850;}
+    @media(max-width:600px){.modal-conteudo{border-radius:20px!important}.modal-body{padding:4px 18px 22px!important}.modal-body h2{font-size:21px!important}.premio-domingo-box>strong{font-size:25px}}
+    </style>
 </head>
 <body>
     <!-- HEADER -->
@@ -1048,7 +1078,12 @@
             <div class="proximo-sorteio-data">EDIÇÃO DE HOJE • <span id="dataPromocaoHoje">--/--/----</span></div>
             <div class="proximo-sorteio-info">Participações a partir de R$ 0,49 • nova edição todos os dias</div>
             <div class="promo-diaria-linha"><span class="promo-diaria-chip">✓ Sorteio diário</span><span class="promo-diaria-chip">✓ Resultado da edição</span><span class="promo-diaria-chip">✓ Participação identificada</span></div>
-            <div class="promo-diaria-destaque">Hoje você participa da edição de <strong id="dataPromocaoHojeExtenso">hoje</strong>. A data muda automaticamente a cada nova edição diária.</div>
+            <div class="promo-diaria-destaque">Edição de <strong id="dataPromocaoHojeExtenso">hoje</strong> • participe a partir de R$ 0,49.</div>
+            <div class="premio-domingo-box">
+                <span class="premio-domingo-tag">PRÊMIO ESPECIAL DE DOMINGO</span>
+                <strong>R$ 1 MILHÃO</strong>
+                <span>Próximo sorteio: <b id="dataProximoDomingo">--/--/----</b></span>
+            </div>
         </div>
         <div class="ganhadores-cabecalho"><div><h2>Ganhadores recentes</h2><p>Confira os ganhadores do sorteio da edição <strong id="edicaoUltimoSorteio">006</strong> de <strong id="dataUltimoSorteio">domingo, 13 de setembro de 2026</strong></p></div></div>
         <div class="ganhadores-lista">
@@ -2740,6 +2775,10 @@
   const b=document.getElementById('dataPromocaoHojeExtenso');
   if(a) a.textContent=curta;
   if(b) b.textContent=extensa.charAt(0).toUpperCase()+extensa.slice(1);
+  const domingo = new Date(agora.getFullYear(),agora.getMonth(),agora.getDate());
+  domingo.setDate(domingo.getDate() + ((7-domingo.getDay())%7));
+  const d=document.getElementById('dataProximoDomingo');
+  if(d) d.textContent=domingo.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase());
 })();
 </script>
 </body>
