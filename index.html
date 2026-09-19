@@ -989,6 +989,12 @@
         </div>
     </div>
 
+    <!-- DATAS AUTOMÁTICAS DO SORTEIO -->
+    <section class="container-principal" id="agendaSorteio" style="margin-top:22px;margin-bottom:22px;">
+      <div style="background:#f8f9fa;border:1px solid #e9ecef;border-radius:14px;padding:18px 20px;"><div style="font-size:12px;font-weight:700;color:#2f4eb5;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;">R$ 1 MILHÃO TODO DOMINGO</div><h2 style="font-size:22px;margin:0 0 5px;color:#171717;font-weight:800;">Próximo sorteio: <span id="dataProximoSorteio">domingo</span></h2><p style="margin:0;color:#666;font-size:14px;">A data é atualizada automaticamente a cada semana.</p></div>
+      <div style="margin-top:28px;"><h2 style="font-size:24px;margin:0 0 4px;color:#111;font-weight:800;">Ganhadores recentes</h2><p style="margin:0;color:#777;font-size:14px;">Confira os ganhadores do sorteio da edição de <strong id="dataUltimoSorteio">domingo</strong>.</p></div>
+    </section>
+
     <!-- HOSPITAL -->
     <div class="container-principal">
         <div class="hospital">
@@ -1378,6 +1384,18 @@
     <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     
     <script>
+    // DATAS AUTOMÁTICAS: próximo domingo e último domingo
+    function atualizarDatasSorteio() {
+      const agora=new Date(), hoje=new Date(agora.getFullYear(),agora.getMonth(),agora.getDate());
+      const diasAteDomingo=(7-hoje.getDay())%7;
+      const proximoDomingo=new Date(hoje); proximoDomingo.setDate(hoje.getDate()+diasAteDomingo);
+      const ultimoDomingo=new Date(proximoDomingo); ultimoDomingo.setDate(proximoDomingo.getDate()-7);
+      const formatar=(data)=>data.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+      const prox=document.getElementById('dataProximoSorteio'), ultimo=document.getElementById('dataUltimoSorteio');
+      if(prox) prox.textContent=formatar(proximoDomingo); if(ultimo) ultimo.textContent=formatar(ultimoDomingo);
+    }
+    atualizarDatasSorteio(); setInterval(atualizarDatasSorteio,60*60*1000);
+
     // VARIÁVEIS GLOBAIS
     let pacoteSelecionado = {
         quantidade: 6,
