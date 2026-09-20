@@ -1073,61 +1073,40 @@
         <p>+ <strong>R$ 1 MILHÃO NO DOMINGO</strong> • Escolha seus títulos e participe.</p>
     </div>
 
-    <!-- PACOTES DE COTAS -->
+    <!-- PACOTES DE COTAS - R$ 0,49 POR TÍTULO / MÍNIMO 15 -->
     <div class="container-principal">
         <div class="cotas">
             <div class="cotas-one">
-                <button type="button" class="cota" onclick="selecionarPacote(6, 2.94, event)">
-                    <div class="cota-qtd">+6</div>
-                    <h1>R$2,94</h1>
-                    <h2>SELECIONAR</h2>
-                </button>
-                <button type="button" class="cota" onclick="selecionarPacote(10, 4.90, event)">
-                    <div class="cota-qtd">+10</div>
-                    <h1>R$4,90</h1>
-                    <h2>SELECIONAR</h2>
-                </button>
                 <button type="button" class="cota" onclick="selecionarPacote(15, 7.35, event)">
-                    <div class="cota-qtd">+15</div>
-                    <h1>R$7,35</h1>
-                    <h2>SELECIONAR</h2>
+                    <div class="cota-qtd">+15</div><h1>R$7,35</h1><h2>SELECIONAR</h2>
+                </button>
+                <button type="button" class="cota" onclick="selecionarPacote(25, 12.25, event)">
+                    <div class="cota-qtd">+25</div><h1>R$12,25</h1><h2>SELECIONAR</h2>
+                </button>
+                <button type="button" class="cota" onclick="selecionarPacote(50, 24.50, event)">
+                    <div class="cota-qtd">+50</div><h1>R$24,50</h1><h2>SELECIONAR</h2>
                 </button>
             </div>
-            
             <div class="cotas-one">
-                <button type="button" class="cota" onclick="selecionarPacote(20, 9.80, event)">
-                    <div class="cota-qtd">+20</div>
-                    <h1>R$9,80</h1>
-                    <h2>SELECIONAR</h2>
-                </button>
-                <button type="button" class="cota" onclick="selecionarPacote(30, 14.70, event)">
-                    <div class="cota-qtd">+30</div>
-                    <h1>R$14,70</h1>
-                    <h2>SELECIONAR</h2>
-                </button>
-                <button type="button" class="cota" onclick="selecionarPacote(40, 19.60, event)">
-                    <div class="cota-qtd">+40</div>
-                    <h1>R$19,60</h1>
-                    <h2>SELECIONAR</h2>
-                </button>
-            </div>
-            
-            <div class="cotas-one">
-                <button type="button" class="cota" onclick="selecionarPacote(70, 34.30, event)">
-                    <i class="bi bi-star-fill destaque"></i>
-                    <div class="cota-qtd">+70</div>
-                    <h1>R$34,30</h1>
-                    <h2>SELECIONAR</h2>
+                <button type="button" class="cota" onclick="selecionarPacote(75, 36.75, event)">
+                    <div class="cota-qtd">+75</div><h1>R$36,75</h1><h2>SELECIONAR</h2>
                 </button>
                 <button type="button" class="cota" onclick="selecionarPacote(100, 49.00, event)">
-                    <div class="cota-qtd">+100</div>
-                    <h1>R$49,00</h1>
-                    <h2>SELECIONAR</h2>
+                    <i class="bi bi-star-fill destaque"></i><div class="cota-qtd">+100</div><h1>R$49,00</h1><h2>SELECIONAR</h2>
                 </button>
+                <button type="button" class="cota" onclick="selecionarPacote(150, 73.50, event)">
+                    <div class="cota-qtd">+150</div><h1>R$73,50</h1><h2>SELECIONAR</h2>
+                </button>
+            </div>
+            <div class="cotas-one">
                 <button type="button" class="cota" onclick="selecionarPacote(200, 98.00, event)">
-                    <div class="cota-qtd">+200</div>
-                    <h1>R$98,00</h1>
-                    <h2>SELECIONAR</h2>
+                    <div class="cota-qtd">+200</div><h1>R$98,00</h1><h2>SELECIONAR</h2>
+                </button>
+                <button type="button" class="cota" onclick="selecionarPacote(300, 147.00, event)">
+                    <div class="cota-qtd">+300</div><h1>R$147,00</h1><h2>SELECIONAR</h2>
+                </button>
+                <button type="button" class="cota" onclick="selecionarPacote(500, 245.00, event)">
+                    <div class="cota-qtd">+500</div><h1>R$245,00</h1><h2>SELECIONAR</h2>
                 </button>
             </div>
         </div>
@@ -1137,7 +1116,7 @@
     <div class="container-principal">
         <div class="contador-cotas">
             <span><button type="button" class="btn-contador-cotas" onclick="decrementar()">-</button></span>
-            <input type="number" id="numero" class="input-contador-cotas" value="0" min="0">
+            <input type="number" id="numero" class="input-contador-cotas" value="15" min="15" step="1" inputmode="numeric">
             <span><button type="button" class="btn-contador-cotas" onclick="incrementar()">+</button></span>
         </div>
         
@@ -1663,76 +1642,66 @@
         window.open(whatsappLink, '_blank', 'noopener,noreferrer');
     }
 
+    const MINIMO_TITULOS = 15;
+    const MAXIMO_TITULOS = 500;
+
     function incrementar() {
-        let input = document.getElementById('numero');
-        let valor = parseInt(input.value) || 0;
-        
-        if (valor < 200) {
-            if (valor === 0) input.value = 6;
-            else if (valor === 6) input.value = 10;
-            else if (valor === 10) input.value = 15;
-            else if (valor === 15) input.value = 20;
-            else if (valor === 20) input.value = 30;
-            else if (valor === 30) input.value = 40;
-            else if (valor === 40) input.value = 70;
-            else if (valor === 70) input.value = 100;
-            else if (valor === 100) input.value = 200;
-        }
-        
+        const input = document.getElementById('numero');
+        let valor = parseInt(input.value) || MINIMO_TITULOS;
+        input.value = Math.min(MAXIMO_TITULOS, Math.max(MINIMO_TITULOS, valor + 1));
         atualizarBotaoComprar();
     }
 
     function decrementar() {
-        let input = document.getElementById('numero');
-        let valor = parseInt(input.value) || 0;
-        
-        if (valor > 6) {
-            if (valor === 200) input.value = 100;
-            else if (valor === 100) input.value = 70;
-            else if (valor === 70) input.value = 40;
-            else if (valor === 40) input.value = 30;
-            else if (valor === 30) input.value = 20;
-            else if (valor === 20) input.value = 15;
-            else if (valor === 15) input.value = 10;
-            else if (valor === 10) input.value = 6;
-        } else {
-            input.value = 0;
-        }
-        
+        const input = document.getElementById('numero');
+        let valor = parseInt(input.value) || MINIMO_TITULOS;
+        input.value = Math.max(MINIMO_TITULOS, valor - 1);
         atualizarBotaoComprar();
     }
 
     function atualizarBotaoComprar() {
-        let input = document.getElementById('numero');
+        const input = document.getElementById('numero');
         let valor = parseInt(input.value) || 0;
-        let btn = document.getElementById('btn-adicionar-carrinho');
-        
-        if (valor > 0) {
-            btn.disabled = false;
-            let valorTotal = (valor * 0.49).toFixed(2);
-            pacoteSelecionado = {
-                quantidade: valor,
-                valor: parseFloat(valorTotal)
-            };
-        } else {
+        const btn = document.getElementById('btn-adicionar-carrinho');
+
+        if (valor < MINIMO_TITULOS) {
             btn.disabled = true;
+            pacoteSelecionado = null;
+            return;
         }
+        if (valor > MAXIMO_TITULOS) {
+            valor = MAXIMO_TITULOS;
+            input.value = MAXIMO_TITULOS;
+        }
+
+        btn.disabled = false;
+        const valorTotal = (valor * 0.49).toFixed(2);
+        pacoteSelecionado = { quantidade: valor, valor: parseFloat(valorTotal) };
     }
 
     function comprarTitulosCustom() {
-        let input = document.getElementById('numero');
+        const input = document.getElementById('numero');
         let quantidade = parseInt(input.value) || 0;
-        
-        if (quantidade > 0) {
-            let valorTotal = (quantidade * 0.49).toFixed(2);
-            pacoteSelecionado = {
-                quantidade: quantidade,
-                valor: parseFloat(valorTotal)
-            };
-            
-            abrirModalPagamento();
+
+        if (quantidade < MINIMO_TITULOS) {
+            input.value = MINIMO_TITULOS;
+            atualizarBotaoComprar();
+            mostrarPopupNotificacao('O pedido mínimo é de 15 títulos (R$ 7,35).', true);
+            return;
         }
+        quantidade = Math.min(quantidade, MAXIMO_TITULOS);
+        input.value = quantidade;
+        pacoteSelecionado = { quantidade, valor: parseFloat((quantidade * 0.49).toFixed(2)) };
+        abrirModalPagamento();
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('numero');
+        if (input) {
+            input.addEventListener('input', atualizarBotaoComprar);
+            atualizarBotaoComprar();
+        }
+    });
 
     function abrirModalPagamento() {
         console.log('Abrindo modal, pacote:', pacoteSelecionado);
